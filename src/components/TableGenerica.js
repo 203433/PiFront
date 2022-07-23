@@ -1,4 +1,6 @@
 import React from 'react';
+
+
 export default function TableGenerica(props) {
     return (
         <>
@@ -40,8 +42,10 @@ export default function TableGenerica(props) {
       {props.graficaPie}
 
     </div>   
+
         </div>
-        
+
+      {props.foot}
 
         </>
     );

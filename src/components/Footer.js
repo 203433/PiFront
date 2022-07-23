@@ -3,9 +3,9 @@ export default function Footer(props) {
   return (
     <>
       <footer
-        style={{ display: "flex", backgroundColor: "#9FCB51", width: "100%" }}
+        style={props.style}
       >
-        <div className="container-fluid">
+        <div className="container-fluid ">
           <div
             style={{ float: "right", display: "flex", alignItems: "center" }}
           >

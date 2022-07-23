@@ -1,8 +1,27 @@
 import React from "react";
 import TableGenerica from "./TableGenerica";
 import Graficas from "./Graficas";
+import TableDatos from "./TableDatos";
+import Cookies from "universal-cookie";
 
 export default function BackgroundGenerica(props) {
+  const cookies = new Cookies();
+
+  const cerrarSesion = () => {
+    cookies.remove("id", { path: "/" });
+    cookies.remove("apellido_paterno", { path: "/" });
+    cookies.remove("apellido_materno", { path: "/" });
+    cookies.remove("nombre", { path: "/" });
+    cookies.remove("username", { path: "/" });
+    window.location.href = "./";
+  };
+
+  const componentDidMount = () => {
+    if (!cookies.get("username")) {
+      window.location.href = "./";
+    }
+  };
+
   return (
     <>
       <div className={props.className} style={props.estilo}>
@@ -21,10 +40,10 @@ export default function BackgroundGenerica(props) {
             dato8="±1℃"
             dato9="Measure Range"
             dato10="0℃"
-            graficaPie={<Graficas/> }
+            graficaPie={<Graficas />}
           />
         </div>
-    
+
         <div id="humedad">
           <TableGenerica
             sensor="Sensor de Humedad"
@@ -39,8 +58,7 @@ export default function BackgroundGenerica(props) {
             dato8="3 a 6 meses"
             dato9="Dimensiones YL-38"
             dato10="30*16 mm"
-            graficaPie={<Graficas/> }
-
+            graficaPie={<Graficas />}
           />
         </div>
         <div id="ultra">
@@ -57,8 +75,7 @@ export default function BackgroundGenerica(props) {
             dato8="4m"
             dato9="Min Range"
             dato10="2cm"
-            graficaPie={<Graficas/> }
-
+            graficaPie={<Graficas />}
           />
         </div>
         <div id="niv">
@@ -75,11 +92,8 @@ export default function BackgroundGenerica(props) {
             dato8="Plástico"
             dato9="Tipo"
             dato10="FF311"
-
           />
         </div>
-
-        
 
         <div id="lcd">
           <TableGenerica
@@ -131,7 +145,20 @@ export default function BackgroundGenerica(props) {
             dato10="802.11ac Wi-Fi / Bluetooth 5.0, Gigabit Ethernet"
           />
         </div>
+        <TableDatos columns={""}  data={""} />
+
+        <div style={{textAlign:"center"}}>
+          <button
+            className="btn btn-danger"
+            style={{ marginTop: "1rem", marginBottom: "1rem", padding:"1rem", fontSize:"1.15rem"}}
+            onClick={cerrarSesion}
+          >
+            Cerrar Sesión
+          </button>
+        </div>
       </div>
+    
+      {props.foot}
     </>
   );
 }

@@ -8,6 +8,8 @@ export default function Background(props) {
         {props.componente }
         
       </div>
+      {props.foot }
+
     </>
   );
 }
