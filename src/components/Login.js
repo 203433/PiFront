@@ -59,7 +59,7 @@ class Login extends Component {
         return (
           <>
 
-          <div style={{ textAlign: "center", paddingTop: "1rem" }}>
+          <div style={{ textAlign: "center", paddingTop: "1rem", }}>
           <p
               className="fs-5"
               style={{

@@ -3,7 +3,9 @@ import TableGenerica from "./TableGenerica";
 import Graficas from "./Graficas";
 import TableDatos from "./TableDatos";
 import Cookies from "universal-cookie";
-
+import TableOrdenadosHumedad from "./TableOrdenadosHumedad";
+import TableOrdenadosUltra from "./TableOrdenadosUltra";
+import TableOrdenadosTemperatura from "./TableOrdenadosTemperatura";
 export default function BackgroundGenerica(props) {
   const cookies = new Cookies();
 
@@ -145,8 +147,12 @@ export default function BackgroundGenerica(props) {
             dato10="802.11ac Wi-Fi / Bluetooth 5.0, Gigabit Ethernet"
           />
         </div>
-        <TableDatos columns={""}  data={""} />
-
+        
+          
+        <TableDatos/>
+        <TableOrdenadosHumedad />
+        <TableOrdenadosTemperatura />
+        <TableOrdenadosUltra/>
         <div style={{textAlign:"center"}}>
           <button
             className="btn btn-danger"
