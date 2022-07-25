@@ -7,7 +7,7 @@ const TableDatos = () => {
 
   const fetchData = () => {
     setIsLoading(true)
-    fetch("http://localhost:3001/riego")
+    fetch("http://192.168.0.10/api/riego.php")
       .then(response => {
         return response.json()
       })
