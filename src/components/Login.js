@@ -23,7 +23,7 @@ class Login extends Component {
         });
     }
 
-    iniciarSesion=async()=>{
+/*     iniciarSesion=async()=>{
         await axios.get(baseUrl, {params: {username: this.state.form.username, password: md5(this.state.form.password)}})
         .then(response=>{
             return response.data;
@@ -46,8 +46,25 @@ class Login extends Component {
             console.log(error);
         })
 
-    }
+    } */
 
+
+
+
+    
+/*     iniciarSesion=()=>{
+    axios.post({
+      url:"https://192.168.0.9/api/login,php",
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      rejectUnauthorized: false,
+      requestCert: false,
+      agent: false,
+      data: data,
+    }).then(response=>{
+      console.log(response);
+    })} */
     componentDidMount() {
         if(cookies.get('username')){
             window.location.href="./main";

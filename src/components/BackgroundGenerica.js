@@ -1,14 +1,17 @@
 import React from "react";
 import TableGenerica from "./TableGenerica";
-import Graficas from "./Graficas";
 import TableDatos from "./TableDatos";
+import TableDatosRiego from "./TableDatosRiego";
 import Cookies from "universal-cookie";
 import TableOrdenadosHumedad from "./TableOrdenadosHumedad";
+import TableOrdenadosHumedadSuelo from "./TableOrdenadosHumedadSuelo";
 import TableOrdenadosUltra from "./TableOrdenadosUltra";
 import TableOrdenadosTemperatura from "./TableOrdenadosTemperatura";
+
+
 export default function BackgroundGenerica(props) {
   const cookies = new Cookies();
-
+  const bell = require("../bell.jpg");
   const cerrarSesion = () => {
     cookies.remove("id", { path: "/" });
     cookies.remove("apellido_paterno", { path: "/" });
@@ -26,6 +29,7 @@ export default function BackgroundGenerica(props) {
 
   return (
     <>
+
       <div className={props.className} style={props.estilo}>
         {props.componente}
         <div id="temp">
@@ -42,7 +46,6 @@ export default function BackgroundGenerica(props) {
             dato8="±1℃"
             dato9="Measure Range"
             dato10="0℃"
-            graficaPie={<Graficas />}
           />
         </div>
 
@@ -60,7 +63,6 @@ export default function BackgroundGenerica(props) {
             dato8="3 a 6 meses"
             dato9="Dimensiones YL-38"
             dato10="30*16 mm"
-            graficaPie={<Graficas />}
           />
         </div>
         <div id="ultra">
@@ -77,7 +79,6 @@ export default function BackgroundGenerica(props) {
             dato8="4m"
             dato9="Min Range"
             dato10="2cm"
-            graficaPie={<Graficas />}
           />
         </div>
         <div id="niv">
@@ -148,11 +149,20 @@ export default function BackgroundGenerica(props) {
           />
         </div>
         
-          
+        <div id="datos">
         <TableDatos/>
-        <TableOrdenadosHumedad />
+        <TableDatosRiego/>
         <TableOrdenadosTemperatura />
         <TableOrdenadosUltra/>
+        <TableOrdenadosHumedad/>
+
+        <TableOrdenadosHumedadSuelo />
+        <div style={{textAlign:'center',marginTop:'2rem'}}>
+        <img src={bell} alt="Raspberry" style={{width:'20rem' }}/>
+        </div>
+
+        </div>
+
         <div style={{textAlign:"center"}}>
           <button
             className="btn btn-danger"

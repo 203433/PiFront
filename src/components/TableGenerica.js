@@ -39,7 +39,6 @@ export default function TableGenerica(props) {
           </tr>
         </tbody>
       </table>
-      {props.graficaPie}
 
     </div>   
 

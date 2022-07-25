@@ -246,6 +246,94 @@ for (let index = 0; index < users.length; index++) {
      datos[index] = users[index].humedad;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var resultadoFinal = '';
+
+
+var mediaMuestra = 0
+const muestraPoblacion=((numDatos*1.96*0.5*0.5)/((0.03*0.03)*(numDatos-1)+1.96+0.5+0.5));
+var arrDatMuestra = [];
+const muestraPoblacionR = Math.round(muestraPoblacion)
+console.log("Esta es la muestra de la poblacion " + muestraPoblacionR);
+
+
+var delta = Math.floor( arrDatos.length / muestraPoblacionR );
+console.log("Valor de Delta" + delta);
+for (let i = delta; i < arrDatos.length; i=i+delta) {
+  mediaMuestra = mediaMuestra + arrDatos[i]
+  arrDatMuestra.push(arrDatos[i])
+  console.log(mediaMuestra);
+}
+var sumaDatosMuestra = mediaMuestra
+mediaMuestra = mediaMuestra/muestraPoblacionR
+ console.log("Valor de la media de la muestra" + mediaMuestra);
+ console.log("Valor de la población de la muestra" +  media);
+ console.log((Math.pow(varianzaF,1/2).toFixed(3)));
+ const valorZc = (mediaMuestra - media) / ((Math.pow(varianzaF,1/2).toFixed(3)) / Math.sqrt(muestraPoblacionR));
+ console.log(valorZc);
+
+ let desviacionMuestra=Math.sqrt(sumaDatosMuestra/arrDatos.length);
+
+
+
+if (valorZc <= -1.96 || valorZc >= 1.96) {
+  resultadoFinal = "Hipótesis alternativa ACEPTADA"
+} else {
+  resultadoFinal = "Hipótesis alternativa RECHAZADA"
+}
+
+  console.log(resultadoFinal);
+
+
+
+
+
+
+
+
+
+
+
 return (
     <div style={{textAlign:"center",  margin:"auto", marginTop:"1rem"}} className="w-75">
             <div style={{}}>
@@ -347,6 +435,24 @@ return (
 
 
             </div>
+            <div>
+                <h3><b>Hipótesis</b></h3>
+                <h4>Los Datos necesarios son: </h4>
+                <h5>Media de Población: {media} </h5>
+                <h5>Media de la Muestra: {mediaMuestra}</h5>
+                <h5>Desv Estandar de la poblacion: {Math.pow(varianzaF,1/2).toFixed(3)}</h5>
+                <h5>Desv Estandar de la muestra: {desviacionMuestra.toFixed(3)}</h5>
+                <h5>Tamaño de la muestra: {muestraPoblacionR}</h5>
+                <h5>Tamaño de la población: {numDatos}</h5>
+                <h5>Margen de Error: 3%</h5>
+                <h5>Significancia: 5%</h5>
+                <h5>Nivel de Confianza: 95%</h5>
+                <h5>Valor Z: {valorZc}</h5>
+                <h5>Hipótesis Resultante: {resultadoFinal}</h5>
+
+
+
+              </div>
           </div>
         )}
       </div>
